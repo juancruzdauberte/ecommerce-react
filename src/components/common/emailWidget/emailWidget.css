@@ -1,0 +1,8 @@
+.email-widget {
+  background-color: rgb(242, 231, 231);
+  border: none;
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+}

@@ -1,0 +1,8 @@
+h2 {
+  text-align: center;
+}
+.item-products {
+  justify-content: center;
+  display: flex;
+  gap: 50px;
+}

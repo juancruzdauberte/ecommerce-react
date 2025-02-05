@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: 1,
+    title: "",
+    price: 200,
+    stock: 21,
+    description: "",
+    category: "colgante",
+    imageUrl: "",
+  },
+  {
+    id: 2,
+    title: "",
+    price: 500,
+    stock: 12,
+    description: "",
+    category: "colgante",
+    imageUrl: "",
+  },
+  {
+    id: 3,
+    title: "",
+    price: 800,
+    stock: 6,
+    description: "",
+    category: "tapiz",
+    imageUrl: "",
+  },
+  {
+    id: 4,
+    title: "",
+    price: 900,
+    stock: 10,
+    description: "",
+    category: "tapiz",
+    imageUrl: "",
+  },
+];

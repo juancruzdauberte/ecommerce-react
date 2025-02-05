@@ -1,0 +1,22 @@
+.carrito {
+  position: relative;
+  display: inline-block;
+  .carrito-widget {
+    border: none;
+    background-color: rgb(242, 231, 231);
+    position: relative;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .carrito-cantidad {
+    position: absolute;
+    font-weight: 900;
+    border-radius: 5px;
+    background-color: rgb(242, 197, 166);
+    padding: 6px;
+    top: -25px;
+  }
+}
