@@ -1,12 +1,48 @@
 #product-card {
+  width: 250px;
+  height: 400px;
+  border: 1px solid;
+
+  .product-img {
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 250px;
+    }
+  }
   .product-description {
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid;
-    width: 200px;
+
+    h5,
+    p,
+    span,
     button {
-      width: 130px;
+      padding: 2px;
+    }
+
+    h5 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      width: 155px;
+      font-weight: bold;
+      padding: 5px;
+      font-size: 1.1rem;
+      border-radius: 5px;
     }
   }
 }

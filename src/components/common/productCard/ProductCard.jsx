@@ -1,16 +1,16 @@
 import "./productCard.css";
 
-export const ProductCard = ({ title, price, description }) => {
+export const ProductCard = ({ product }) => {
   return (
     <section id="product-card">
       <div className="product-img">
-        <img src="" alt="" />
+        <img src={product.url} />
       </div>
       <div className="product-description">
-        <h5>{title}</h5>
-        <p>{description}</p>
-        <span>${price}</span>
-        <button>Agregar al carrito</button>
+        <h5>{product.title}</h5>
+        <p>{product.description}</p>
+        <span>${product.price}</span>
+        <button>Añadir al carrito</button>
       </div>
     </section>
   );

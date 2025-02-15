@@ -4,6 +4,8 @@ import { FacebookWidget } from "../../common/facebookWidget/FacebookWidget";
 import { EmailWidget } from "../../common/emailWidget/EmailWidget";
 
 export function Footer() {
+  const copyright = String.fromCodePoint(0x00a9);
+
   return (
     <>
       <section className="widgets-mail">
@@ -28,6 +30,10 @@ export function Footer() {
           <li>Hogar</li>
           <li>Tapiz</li>
         </ul>
+      </section>
+
+      <section>
+        <p>Todos los derechos reservados - {copyright} Tierra de Nudos</p>
       </section>
     </>
   );
