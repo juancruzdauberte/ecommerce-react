@@ -7,7 +7,7 @@ export function Footer() {
   const copyright = String.fromCodePoint(0x00a9);
 
   return (
-    <>
+    <footer id="footer">
       <section className="widgets-mail">
         <div className="widgets-container">
           <h4>Seguinos en nuestras redes</h4>
@@ -35,6 +35,6 @@ export function Footer() {
       <section>
         <p>Todos los derechos reservados - {copyright} Tierra de Nudos</p>
       </section>
-    </>
+    </footer>
   );
 }

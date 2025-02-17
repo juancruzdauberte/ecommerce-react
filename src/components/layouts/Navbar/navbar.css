@@ -1,29 +1,81 @@
+/* Header */
 #header {
   display: flex;
-  background-color: rgb(242, 231, 231);
-  align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  background: rgb(242, 231, 231);
+  color: black;
+  padding: 22px;
+}
 
-  .logo-titulo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.navbar-cart {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-    img {
-      width: 100px;
+.logo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-titulo img {
+  height: 40px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  color: black;
+  cursor: pointer;
+}
+
+.menu-hamburguesa {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #header {
+    .logo-titulo img {
+      display: none;
     }
-  }
+    .logo-titulo h1 {
+      padding-left: 15px;
+    }
+    .menu-hamburguesa {
+      display: block; /* Muestra el botón hamburguesa */
+      position: absolute;
+      left: 0;
+      top: 17px;
+    }
+    .navbar {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: rgb(242, 231, 231);
+      width: 100%;
+      flex-direction: column;
+      display: none; /* Oculta el menú por defecto */
+    }
+    .navbar.open {
+      display: flex; /* Muestra el menú al hacer clic */
+      padding: 10px 0;
+      text-align: left;
+    }
 
-  .navbar {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    margin-right: 20px;
-    ul {
-      display: flex;
-      gap: 15px;
-      list-style: none;
+    .navbar ul {
+      flex-direction: column;
+    }
+
+    .navbar ul li {
+      padding: 10px 0;
     }
   }
 }

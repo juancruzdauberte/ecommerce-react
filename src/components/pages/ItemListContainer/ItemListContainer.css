@@ -1,8 +1,5 @@
 #main {
   .item-list-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     .loading-spinner {
       display: flex;
       flex-direction: column;
