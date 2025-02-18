@@ -22,6 +22,7 @@
 
 .logo-titulo img {
   height: 40px;
+  cursor: pointer;
 }
 
 .navbar ul {
@@ -33,6 +34,9 @@
 .navbar ul li {
   color: black;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .menu-hamburguesa {
@@ -42,40 +46,41 @@
 }
 
 @media (max-width: 768px) {
-  #header {
-    .logo-titulo img {
-      display: none;
-    }
-    .logo-titulo h1 {
-      padding-left: 15px;
-    }
-    .menu-hamburguesa {
-      display: block; /* Muestra el botón hamburguesa */
-      position: absolute;
-      left: 0;
-      top: 17px;
-    }
-    .navbar {
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: rgb(242, 231, 231);
-      width: 100%;
-      flex-direction: column;
-      display: none; /* Oculta el menú por defecto */
-    }
-    .navbar.open {
-      display: flex; /* Muestra el menú al hacer clic */
-      padding: 10px 0;
-      text-align: left;
-    }
+  .menu-hamburguesa {
+    display: block;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+  }
 
-    .navbar ul {
-      flex-direction: column;
-    }
+  .navbar {
+    position: absolute;
+    top: 83px;
+    left: 0;
+    background: rgb(240, 240, 240);
+    width: 100%;
+    flex-direction: column;
+    display: none;
+  }
+  .navbar.open {
+    display: flex;
+    padding: 20px 25px;
+    text-align: left;
+    width: 100%;
+  }
 
-    .navbar ul li {
-      padding: 10px 0;
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .navbar ul li {
+    display: inline-block;
+    white-space: nowrap;
+    width: 0;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

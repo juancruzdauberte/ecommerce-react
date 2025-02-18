@@ -1,15 +1,15 @@
-#main {
-  .item-list-container {
-    .loading-spinner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .item-products {
-      justify-content: center;
-      display: flex;
-      gap: 50px;
-    }
+.item-list-container {
+  min-height: 100vh; /*LUEGO DARLE ESTE HEIGH A LA ETIQUETA MAIN PRINCIPAL*/
+  align-content: center;
+  .loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-products {
+    justify-content: center;
+    display: flex;
+    gap: 50px;
   }
 }

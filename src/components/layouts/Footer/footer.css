@@ -32,6 +32,9 @@
         text-decoration: none;
         color: black;
         font-weight: 500;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -45,6 +48,10 @@
       gap: 20px;
       display: flex;
       flex-direction: column;
+    }
+    li:hover {
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }

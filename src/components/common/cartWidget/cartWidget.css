@@ -15,8 +15,7 @@
     position: absolute;
     font-weight: 900;
     border-radius: 5px;
-    background-color: rgb(242, 197, 166);
-    padding: 6px;
-    top: -25px;
+    top: -12px;
+    left: 12px;
   }
 }
