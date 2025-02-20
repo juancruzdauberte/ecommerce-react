@@ -11,7 +11,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-
       <Routes>
         {/* Inicio */}
         <Route path="/" element={<Home />} />
@@ -23,7 +22,6 @@ const App = () => {
         {/* Quienes somos */}
         <Route path="/quienes-somos" element={<QuienesSomos />} />
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import "./ItemListContainer.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
-import { LoadingWidget } from "../../common/loadingWidget/LoadingWidget";
+import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useFetch } from "../../hooks/useFetch";
 
 export const ItemListContainer = () => {

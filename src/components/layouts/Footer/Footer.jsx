@@ -1,8 +1,9 @@
 import "./footer.css";
-import { InstagramWidget } from "../../common/instagramWidget/InstagramWidget";
-import { FacebookWidget } from "../../common/facebookWidget/FacebookWidget";
-import { EmailWidget } from "../../common/emailWidget/EmailWidget";
+import { InstagramWidget } from "../../common/widgets/instagramWidget/InstagramWidget";
+import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
+import { EmailWidget } from "../../common/widgets/emailWidget/EmailWidget";
 import { NavLink } from "react-router-dom";
+import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
 
 export function Footer() {
   const copyright = String.fromCodePoint(0x00a9);
@@ -15,12 +16,12 @@ export function Footer() {
           <div className="widgets">
             <InstagramWidget />
             <FacebookWidget />
+            <TikTokWidget />
           </div>
         </div>
 
-        <div className="mail">
+        <div>
           <EmailWidget />
-          <a href="mailto:tierradenudos@gmail.com">tierradenudos@gmail.com</a>
         </div>
       </section>
 

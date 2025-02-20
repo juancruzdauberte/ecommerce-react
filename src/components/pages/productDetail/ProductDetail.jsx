@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import "./productDetail.css";
-import { LoadingWidget } from "../../common/loadingWidget/LoadingWidget";
+import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 
 export const ProductDetail = () => {
   const { id } = useParams();

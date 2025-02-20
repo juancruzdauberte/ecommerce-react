@@ -3,8 +3,9 @@ import "./emailWidget.css";
 
 export function EmailWidget() {
   return (
-    <button className="email-widget">
+    <div className="email-widget">
       <MdOutlineEmail />
-    </button>
+      <a href="mailto:tierradenudos@gmail.com">tierradenudos@gmail.com</a>
+    </div>
   );
 }

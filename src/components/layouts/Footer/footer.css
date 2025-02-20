@@ -23,20 +23,6 @@
         gap: 10px;
       }
     }
-
-    .mail {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      a {
-        text-decoration: none;
-        color: black;
-        font-weight: 500;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 
   .navbar-footer {

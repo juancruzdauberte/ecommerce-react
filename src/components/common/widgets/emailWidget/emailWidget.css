@@ -1,0 +1,17 @@
+.email-widget {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+}

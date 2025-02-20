@@ -26,7 +26,6 @@ nav a {
 .active {
   border: solid 3px black;
   padding: 4px;
-  color: blue;
   font-weight: bold;
   border-radius: 100px;
 }

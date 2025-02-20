@@ -1,0 +1,21 @@
+.contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.widgets-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0px 200px 0px 200px;
+}
+
+.instagramWidget-contacto,
+.wppWidget-contacto,
+.tiktokWidget-contacto {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
