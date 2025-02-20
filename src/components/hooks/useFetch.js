@@ -6,17 +6,23 @@ export const useFetch = (endpoint) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async () => {
-      try {
-        const res = await fetch(endpoint);
-        const dataRes = await res.json();
-        setData(dataRes);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-  });
+    setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          const res = await fetch(endpoint);
+          if (!res.ok) {
+            throw new Error(`Error HTTP: ${res.status}`);
+          }
+          const dataRes = await res.json();
+          setData(dataRes);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchData();
+    }, 3000);
+  }, [endpoint]);
   return { data, loading, error };
 };

@@ -1,5 +1,4 @@
 .item-list-container {
-  min-height: 100vh; /*LUEGO DARLE ESTE HEIGH A LA ETIQUETA MAIN PRINCIPAL*/
   align-content: center;
   .loading-spinner {
     display: flex;

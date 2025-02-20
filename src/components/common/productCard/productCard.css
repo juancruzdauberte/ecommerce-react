@@ -37,12 +37,18 @@
 
     button {
       background-color: black;
-      color: white;
       width: 155px;
       font-weight: bold;
       padding: 5px;
       font-size: 1.1rem;
       border-radius: 5px;
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

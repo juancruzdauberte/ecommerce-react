@@ -49,9 +49,5 @@
       display: flex;
       flex-direction: column;
     }
-    li:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
 }

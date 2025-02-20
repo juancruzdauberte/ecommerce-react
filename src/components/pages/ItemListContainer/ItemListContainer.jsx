@@ -1,61 +1,33 @@
-import { useEffect, useState } from "react";
 import "./ItemListContainer.css";
-import { products } from "../../../products";
 import { ProductCard } from "../../common/productCard/ProductCard";
-import ClipLoader from "react-spinners/ClipLoader";
+import { LoadingWidget } from "../../common/loadingWidget/LoadingWidget";
 import { useFetch } from "../../hooks/useFetch";
 
 export const ItemListContainer = () => {
-  const [items, setItems] = useState([]);
-  // const { data, loading, error } = useFetch("API_URL");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const isAdmin = true;
-
-        if (isAdmin) {
-          resolve(products);
-        } else {
-          reject({ message: "Peticion fallida", status: 400 });
-        }
-      }, 2500);
-    });
-
-    getProducts
-      .then((res) => {
-        setItems(res);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-  }, []);
+  const { data, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
 
   return (
-    <>
+    <main>
       <section className="item-list-container">
-        {loading ? (
-          <div className="loading-spinner">
-            <ClipLoader
-              color="#ff7b08"
-              cssOverride={{}}
-              loading
-              speedMultiplier={1}
-              size={50}
-            />
-            <p>Cargando productos...</p>
+        {loading && <LoadingWidget text="productos" />}
+
+        {error && (
+          <div>
+            <p>Error al cargar los productos: {error.message}</p>
           </div>
-        ) : (
+        )}
+        {!loading && !error && data.length > 0 && (
           <div className="item-products">
-            {items.map((item) => (
+            {data.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
           </div>
         )}
+
+        {!loading && !error && data.length === 0 && (
+          <p>No hay productos disponibles.</p>
+        )}
       </section>
-    </>
+    </main>
   );
 };

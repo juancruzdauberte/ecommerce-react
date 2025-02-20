@@ -1,7 +1,10 @@
 import "./navbar.css";
 import { CartWidget } from "../../common/cartWidget/CartWidget";
+import { AccountWidget } from "../../common/accountWidget/AccountWidget";
+import { SearchWidget } from "../../common/seachWidget/SearchWidget";
 import { useState, useEffect } from "react";
 import { TbMenu2 } from "react-icons/tb";
+import { Link, NavLink } from "react-router-dom";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,10 +23,12 @@ export function Navbar() {
     <header id="header">
       <section className="logo-titulo">
         {isMobile ? (
-          <img
-            src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1739045695/logo_j6mmee.png"
-            alt="logo"
-          />
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1739045695/logo_j6mmee.png"
+              alt="logo"
+            />
+          </Link>
         ) : (
           <section
             className="menu-hamburguesa"
@@ -34,21 +39,54 @@ export function Navbar() {
             <TbMenu2 />
           </section>
         )}
-        <h1>Tierra de Nudos</h1>
+        <h1>
+          <Link to="/">Tierra de Nudos</Link>
+        </h1>
       </section>
-      <section className="navbar-cart">
+
+      <section className="navbar-iconos">
         <section>
           <nav className={`navbar ${menuOpen ? "open" : " "}`}>
             <ul>
-              <li>Inicio</li>
-              <li>Productos</li>
-              <li>Contacto</li>
-              <li>Quienes somos</li>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Inicio
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/productos"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Productos
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contacto"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Contacto
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/quienes-somos"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Quienes somos
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </section>
 
-        <section>
+        <section className="iconos">
+          <SearchWidget />
+          <AccountWidget />
           <CartWidget />
         </section>
       </section>

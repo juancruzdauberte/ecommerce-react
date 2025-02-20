@@ -2,6 +2,7 @@ import "./footer.css";
 import { InstagramWidget } from "../../common/instagramWidget/InstagramWidget";
 import { FacebookWidget } from "../../common/facebookWidget/FacebookWidget";
 import { EmailWidget } from "../../common/emailWidget/EmailWidget";
+import { NavLink } from "react-router-dom";
 
 export function Footer() {
   const copyright = String.fromCodePoint(0x00a9);
@@ -25,10 +26,38 @@ export function Footer() {
 
       <section className="navbar-footer">
         <ul>
-          <li>Todos</li>
-          <li>Colgantes</li>
-          <li>Hogar</li>
-          <li>Tapiz</li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Inicio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/productos"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Productos
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Contacto
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/quienes-somos"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Quienes somos
+            </NavLink>
+          </li>
         </ul>
       </section>
 

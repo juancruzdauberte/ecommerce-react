@@ -1,21 +1,16 @@
 .carrito {
   position: relative;
-  display: inline-block;
-  .carrito-widget {
-    border: none;
-    background-color: rgb(242, 231, 231);
-    position: relative;
-    svg {
-      width: 30px;
-      height: 30px;
-    }
+  cursor: pointer;
+  svg {
+    width: 30px;
+    height: 30px;
   }
 
   .carrito-cantidad {
     position: absolute;
     font-weight: 900;
-    border-radius: 5px;
-    top: -12px;
-    left: 12px;
+    font-size: 1.1rem;
+    top: -13px;
+    left: 13px;
   }
 }

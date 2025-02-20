@@ -8,12 +8,20 @@
   padding: 22px;
 }
 
-.navbar-cart {
+h1 a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navbar-iconos {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
-
+.iconos {
+  display: flex;
+  gap: 10px;
+}
 .logo-titulo {
   display: flex;
   align-items: center;
@@ -29,14 +37,6 @@
   list-style: none;
   display: flex;
   gap: 20px;
-}
-
-.navbar ul li {
-  color: black;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .menu-hamburguesa {

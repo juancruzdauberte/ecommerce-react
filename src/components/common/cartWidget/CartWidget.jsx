@@ -4,9 +4,7 @@ import "./cartWidget.css";
 export const CartWidget = () => {
   return (
     <div className="carrito">
-      <button className="carrito-widget">
-        <PiShoppingCartSimpleLight />
-      </button>
+      <PiShoppingCartSimpleLight />
       <span className="carrito-cantidad">2</span>
     </div>
   );

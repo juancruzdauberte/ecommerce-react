@@ -1,0 +1,21 @@
+.loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.684);
+  z-index: 9999;
+}
+
+.loading-spinner p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff7b08;
+}
