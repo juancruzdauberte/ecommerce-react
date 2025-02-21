@@ -13,20 +13,41 @@ export const Contacto = () => {
 
         <section className="widgets-form">
           <section className="widgets-contacto">
-            <EmailWidget />
-            <div className="instagramWidget-contacto">
-              <InstagramWidget />
-              <p>Instagram</p>
-            </div>
-            <div className="wppWidget-contacto">
-              <WppWidget />
-              <p>WhatsApp</p>
-            </div>
-
-            <div className="tiktokWidget-contacto">
-              <TikTokWidget />
-              <p>TikTok</p>
-            </div>
+            <ul>
+              <li>
+                <EmailWidget />
+              </li>
+              <li>
+                <div className="instagramWidget-contacto">
+                  <InstagramWidget />
+                  <a
+                    href="https://www.instagram.com/tierradenudos_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p> Instagram</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div className="wppWidget-contacto">
+                  <WppWidget />
+                  <p>WhatsApp</p>
+                </div>
+              </li>
+              <li>
+                <div className="tiktokWidget-contacto">
+                  <TikTokWidget />
+                  <a
+                    href="https://www.tiktok.com/@tierradenudos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p>TikTok</p>
+                  </a>
+                </div>
+              </li>
+            </ul>
           </section>
 
           <section className="formulario">

@@ -2,9 +2,12 @@ import "./ItemListContainer.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useFetch } from "../../hooks/useFetch";
+import { useState } from "react";
+import { Filters } from "../../common/filter/Filters";
 
 export const ItemListContainer = () => {
-  const { data, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
+  const { data: products, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
+  const [filters, setFilters] = useState({ category: "all", minPrice: 0 });
 
   return (
     <main>
@@ -16,15 +19,18 @@ export const ItemListContainer = () => {
             <p>Error al cargar los productos: {error.message}</p>
           </div>
         )}
-        {!loading && !error && data.length > 0 && (
+
+        <Filters changeFilters={setFilters} />
+
+        {!loading && !error && products.length > 0 && (
           <div className="item-products">
-            {data.map((item) => (
+            {filteredProducts.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
           </div>
         )}
 
-        {!loading && !error && data.length === 0 && (
+        {!loading && !error && products.length === 0 && (
           <p>No hay productos disponibles.</p>
         )}
       </section>

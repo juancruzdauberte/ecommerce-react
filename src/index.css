@@ -18,14 +18,42 @@ main {
 nav a {
   text-decoration: none;
   color: black;
-  &:hover {
-    text-decoration: underline;
-  }
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 5px;
 }
 
-.active {
-  border: solid 3px black;
-  padding: 4px;
+nav a:hover,
+.navbar-footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.navbar-footer ul li a.active,
+nav a.active {
+  color: white;
+  background-color: #98806299;
+  border-radius: 5px;
   font-weight: bold;
-  border-radius: 100px;
+}
+
+.navbar-footer ul li a.active:hover,
+nav a.active:hover {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #7a644e96;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #706c6c;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

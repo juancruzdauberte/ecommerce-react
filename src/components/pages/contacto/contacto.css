@@ -11,11 +11,25 @@
   padding: 0px 200px 0px 200px;
 }
 
-.instagramWidget-contacto,
-.wppWidget-contacto,
-.tiktokWidget-contacto {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 500;
+ul li {
+  list-style: none;
+
+  .instagramWidget-contacto,
+  .wppWidget-contacto,
+  .tiktokWidget-contacto {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+
+    p {
+      color: black;
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

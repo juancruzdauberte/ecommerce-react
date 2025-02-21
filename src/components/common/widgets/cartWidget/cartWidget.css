@@ -1,6 +1,8 @@
 .carrito {
   position: relative;
   cursor: pointer;
+  color: black;
+
   svg {
     width: 30px;
     height: 30px;

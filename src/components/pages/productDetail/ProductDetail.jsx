@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import "./productDetail.css";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 
 export const ProductDetail = () => {
   const { id } = useParams();
+  console.log(typeof id); //llega como string
   const { data: items, loading, error } = useFetch("/products.json");
 
-  const product = items.find((el) => Number(el.id) === Number(id));
+  const product = items.find((el) => el.id === parseInt(id));
 
   return (
     <main>
@@ -22,7 +23,9 @@ export const ProductDetail = () => {
             <h1>{product.title}</h1>
             <p>{product.description}</p>
             <span>${product.price}</span>
-            <button>Añadir al carrito</button>
+            <button>
+              <Link to={`/carrito/${product.id}`}>Añadir al carrito</Link>
+            </button>
           </section>
         </article>
       )}

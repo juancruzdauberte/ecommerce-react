@@ -87,7 +87,9 @@ export function Navbar() {
         <section className="iconos">
           <SearchWidget />
           <AccountWidget />
-          <CartWidget />
+          <Link to={"/carrito"}>
+            <CartWidget />
+          </Link>
         </section>
       </section>
     </header>

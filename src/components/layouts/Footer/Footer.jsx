@@ -28,36 +28,16 @@ export function Footer() {
       <section className="navbar-footer">
         <ul>
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Inicio
-            </NavLink>
+            <NavLink to="/">Inicio</NavLink>
           </li>
           <li>
-            <NavLink
-              to="/productos"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Productos
-            </NavLink>
+            <NavLink to="/productos">Productos</NavLink>
           </li>
           <li>
-            <NavLink
-              to="/contacto"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Contacto
-            </NavLink>
+            <NavLink to="/contacto">Contacto</NavLink>
           </li>
           <li>
-            <NavLink
-              to="/quienes-somos"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Quienes somos
-            </NavLink>
+            <NavLink to="/quienes-somos">Quienes somos</NavLink>
           </li>
         </ul>
       </section>
