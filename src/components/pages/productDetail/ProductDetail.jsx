@@ -23,9 +23,7 @@ export const ProductDetail = () => {
             <h1>{product.title}</h1>
             <p>{product.description}</p>
             <span>${product.price}</span>
-            <button>
-              <Link to={`/carrito/${product.id}`}>Añadir al carrito</Link>
-            </button>
+            <button>Añadir al carrito</button>
           </section>
         </article>
       )}

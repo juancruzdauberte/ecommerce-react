@@ -2,12 +2,16 @@ import "./ItemListContainer.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useFetch } from "../../hooks/useFetch";
-import { useState } from "react";
-import { Filters } from "../../common/filter/Filters";
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = () => {
   const { data: products, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
-  const [filters, setFilters] = useState({ category: "all", minPrice: 0 });
+  const { categoryName } = useParams();
+  console.log(categoryName);
+
+  const productosFiltrados = categoryName
+    ? products.filter((product) => product.category === categoryName) //si existe el parametro muestro los productos que tengan el mismo nombre de categoria que el parametro, sino muestro todos los productos
+    : products;
 
   return (
     <main>
@@ -15,24 +19,18 @@ export const ItemListContainer = () => {
         {loading && <LoadingWidget text="productos" />}
 
         {error && (
-          <div>
+          <section>
             <p>Error al cargar los productos: {error.message}</p>
-          </div>
+          </section>
         )}
 
-        <Filters changeFilters={setFilters} />
-
-        {!loading && !error && products.length > 0 && (
-          <div className="item-products">
-            {filteredProducts.map((item) => (
+        {
+          <section className="item-products">
+            {productosFiltrados.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
-          </div>
-        )}
-
-        {!loading && !error && products.length === 0 && (
-          <p>No hay productos disponibles.</p>
-        )}
+          </section>
+        }
       </section>
     </main>
   );

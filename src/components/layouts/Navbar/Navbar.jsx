@@ -49,36 +49,22 @@ export function Navbar() {
           <nav className={`navbar ${menuOpen ? "open" : " "}`}>
             <ul>
               <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Inicio
-                </NavLink>
+                <NavLink to="/">Inicio</NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/productos"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Productos
-                </NavLink>
+                <NavLink to="/products">Productos</NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/contacto"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Contacto
-                </NavLink>
+                <NavLink to="/products/category/tapiz">Tapices</NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/quienes-somos"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Quienes somos
-                </NavLink>
+                <NavLink to="/products/category/colgante">Colgantes</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contacto</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">Quienes somos</NavLink>
               </li>
             </ul>
           </nav>
@@ -87,7 +73,7 @@ export function Navbar() {
         <section className="iconos">
           <SearchWidget />
           <AccountWidget />
-          <Link to={"/carrito"}>
+          <Link to={"/cart"}>
             <CartWidget />
           </Link>
         </section>

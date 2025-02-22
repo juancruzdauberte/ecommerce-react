@@ -12,7 +12,7 @@ export const ProductCard = ({ product }) => {
         <p>{product.description}</p>
         <span>${product.price}</span>
         <button>
-          <Link to={`/productos/${product.id}`}>Ver mas detalle</Link>
+          <Link to={`/product-detail/${product.id}`}>Ver mas detalle</Link>
         </button>
       </section>
     </article>

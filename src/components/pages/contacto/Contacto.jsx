@@ -3,7 +3,25 @@ import { EmailWidget } from "../../common/widgets/emailWidget/EmailWidget";
 import { InstagramWidget } from "../../common/widgets/instagramWidget/InstagramWidget";
 import { WppWidget } from "../../common/widgets/wppWidget/WppWidget";
 import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
+import { useState } from "react";
+
 export const Contacto = () => {
+  const [userInfo, setUserInfo] = useState({
+    nombre: "",
+    email: "", //estas propiedades deben ser igual a la de los inputs. ej: name= "email"
+    mensaje: "",
+  });
+
+  const funcionForm = (evento) => {
+    evento.preventDefault();
+    console.log(userInfo);
+  };
+
+  const funcionInput = (evento) => {
+    const { value, name } = evento.target; //name es el nombre que tiene el input y value es su valor
+    setUserInfo({ ...userInfo, [name]: value }); // hacemos una copia del obejto. [name]: value actualiza o agrega una PROPIEDAD dinámica en el objeto.
+  };
+
   return (
     <main>
       <section className="contacto">
@@ -51,7 +69,30 @@ export const Contacto = () => {
           </section>
 
           <section className="formulario">
-            <p>aca va el formulario</p>
+            <form onSubmit={funcionForm}>
+              <label>Nombre y apellido</label>
+              <input
+                type="text"
+                placeholder="nombre"
+                name="nombre"
+                onChange={funcionInput}
+              />
+              <label>Email</label>
+              <input
+                type="text"
+                placeholder="email"
+                name="email"
+                onChange={funcionInput}
+              />
+              <label>Mensaje</label>
+              <input
+                type="text"
+                placeholder="mensaje"
+                name="mensaje"
+                onChange={funcionInput}
+              />
+              <button type="submit">Enviar</button>
+            </form>
           </section>
         </section>
       </section>
