@@ -4,6 +4,7 @@ import { InstagramWidget } from "../../common/widgets/instagramWidget/InstagramW
 import { WppWidget } from "../../common/widgets/wppWidget/WppWidget";
 import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
 import { useState } from "react";
+import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
 
 export const Contacto = () => {
   const [userInfo, setUserInfo] = useState({
@@ -25,7 +26,7 @@ export const Contacto = () => {
   return (
     <main>
       <section className="contacto">
-        <section>
+        <section className="titlePage">
           <h1>Contacto</h1>
         </section>
 
@@ -36,7 +37,7 @@ export const Contacto = () => {
                 <EmailWidget />
               </li>
               <li>
-                <div className="instagramWidget-contacto">
+                <div className="widgets-style">
                   <InstagramWidget />
                   <a
                     href="https://www.instagram.com/tierradenudos_/"
@@ -48,13 +49,13 @@ export const Contacto = () => {
                 </div>
               </li>
               <li>
-                <div className="wppWidget-contacto">
+                <div className="widgets-style">
                   <WppWidget />
                   <p>WhatsApp</p>
                 </div>
               </li>
               <li>
-                <div className="tiktokWidget-contacto">
+                <div className="widgets-style">
                   <TikTokWidget />
                   <a
                     href="https://www.tiktok.com/@tierradenudos"
@@ -65,33 +66,52 @@ export const Contacto = () => {
                   </a>
                 </div>
               </li>
+              <li>
+                <div className="widgets-style">
+                  <FacebookWidget />
+                  <a
+                    href="https://web.facebook.com/marialaura.liaudat"
+                    target="_blank"
+                  >
+                    <p>Facebook</p>
+                  </a>
+                </div>
+              </li>
             </ul>
           </section>
 
-          <section className="formulario">
+          <section className="formulario-container">
             <form onSubmit={funcionForm}>
-              <label>Nombre y apellido</label>
-              <input
-                type="text"
-                placeholder="nombre"
-                name="nombre"
-                onChange={funcionInput}
-              />
-              <label>Email</label>
-              <input
-                type="text"
-                placeholder="email"
-                name="email"
-                onChange={funcionInput}
-              />
-              <label>Mensaje</label>
-              <input
-                type="text"
-                placeholder="mensaje"
-                name="mensaje"
-                onChange={funcionInput}
-              />
-              <button type="submit">Enviar</button>
+              <div className="label-input">
+                <label>Nombre y apellido</label>
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  name="nombre"
+                  onChange={funcionInput}
+                />
+              </div>
+              <div className="label-input">
+                <label>Email</label>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  name="email"
+                  onChange={funcionInput}
+                />
+              </div>
+              <div className="label-input">
+                <label>Mensaje</label>
+                <input
+                  type="text"
+                  placeholder="Mensaje"
+                  name="mensaje"
+                  onChange={funcionInput}
+                />
+              </div>
+              <div className="btn-container">
+                <button type="submit">Enviar</button>
+              </div>
             </form>
           </section>
         </section>

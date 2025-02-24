@@ -3,5 +3,8 @@
   svg {
     width: 35px;
     height: 35px;
+    &:hover {
+      color: #e1306b6b;
+    }
   }
 }

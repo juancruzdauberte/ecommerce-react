@@ -5,6 +5,7 @@ import { SearchWidget } from "../../common/widgets/seachWidget/SearchWidget";
 import { useState, useEffect } from "react";
 import { TbMenu2 } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,14 +52,15 @@ export function Navbar() {
               <li>
                 <NavLink to="/">Inicio</NavLink>
               </li>
-              <li>
-                <NavLink to="/products">Productos</NavLink>
-              </li>
-              <li>
-                <NavLink to="/products/category/tapiz">Tapices</NavLink>
-              </li>
-              <li>
-                <NavLink to="/products/category/colgante">Colgantes</NavLink>
+              <li class="dropdown">
+                <NavLink to="/products">
+                  Productos <RiArrowDownSLine className="dropdown-icon" />
+                  <div class="dropdown-content">
+                    <Link to="/products">Todos</Link>
+                    <Link to="/products/category/colgante">Colgantes</Link>
+                    <Link to="/products/category/tapiz">Tapices</Link>
+                  </div>
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/contact">Contacto</NavLink>

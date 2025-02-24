@@ -31,13 +31,13 @@ export function Footer() {
             <NavLink to="/">Inicio</NavLink>
           </li>
           <li>
-            <NavLink to="/productos">Productos</NavLink>
+            <NavLink to="/products">Productos</NavLink>
           </li>
           <li>
-            <NavLink to="/contacto">Contacto</NavLink>
+            <NavLink to="/contact">Contacto</NavLink>
           </li>
           <li>
-            <NavLink to="/quienes-somos">Quienes somos</NavLink>
+            <NavLink to="/about">Quienes somos</NavLink>
           </li>
         </ul>
       </section>

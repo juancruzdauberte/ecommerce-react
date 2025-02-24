@@ -1,0 +1,44 @@
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+.carousel img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.slider {
+  background-color: rgba(192, 90, 17, 0.026);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+svg {
+  width: 25px;
+  height: 25px;
+}
+
+.left-btn {
+  left: 10px;
+}
+
+.right-btn {
+  right: 10px;
+}

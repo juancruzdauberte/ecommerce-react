@@ -18,13 +18,20 @@ main {
 nav a {
   text-decoration: none;
   color: black;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition: color 0.2s ease, background-color 0.4s ease;
   padding: 5px;
+}
+
+.titlePage {
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
 }
 
 nav a:hover,
 .navbar-footer ul li a:hover {
   text-decoration: underline;
+  color: #0000007e;
 }
 
 .navbar-footer ul li a.active,

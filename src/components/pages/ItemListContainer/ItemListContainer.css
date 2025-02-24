@@ -1,14 +1,27 @@
-.item-list-container {
-  align-content: center;
-  .loading-spinner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .item-products {
-    justify-content: center;
-    display: flex;
-    gap: 50px;
-  }
+.products-filter {
+  display: flex;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  background-color: rgba(199, 128, 40, 0.145);
+  height: 150px;
+}
+
+.filter-input {
+  display: flex;
+  padding: 2px;
+  gap: 10px;
+}
+
+.item-products {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
 }

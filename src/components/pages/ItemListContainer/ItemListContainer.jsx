@@ -15,22 +15,48 @@ export const ItemListContainer = () => {
 
   return (
     <main>
-      <section className="item-list-container">
-        {loading && <LoadingWidget text="productos" />}
+      <section className="titlePage">
+        <h1>Productos</h1>
+      </section>
 
-        {error && (
+      <section className="products-filter">
+        <section className="filter-container">
           <section>
-            <p>Error al cargar los productos: {error.message}</p>
+            <h3>Categorias</h3>
           </section>
-        )}
+          <section className="filter-checkbox">
+            <div className="filter-input">
+              <span>Todos los productos</span>
+              <input type="checkbox" />
+            </div>
+            <div className="filter-input">
+              <span>Colgantes</span>
+              <input type="checkbox" />
+            </div>
+            <div className="filter-input">
+              <span>Tapices</span>
+              <input type="checkbox" />
+            </div>
+          </section>
+        </section>
 
-        {
-          <section className="item-products">
-            {productosFiltrados.map((item) => (
-              <ProductCard key={item.id} product={item} />
-            ))}
-          </section>
-        }
+        <section className="item-list-container">
+          {loading && <LoadingWidget text="productos" />}
+
+          {error && (
+            <section>
+              <p>Error al cargar los productos: {error.message}</p>
+            </section>
+          )}
+
+          {
+            <section className="item-products">
+              {productosFiltrados.map((item) => (
+                <ProductCard key={item.id} product={item} />
+              ))}
+            </section>
+          }
+        </section>
       </section>
     </main>
   );
