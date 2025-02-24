@@ -1,9 +1,9 @@
-import { Navbar } from "./components/layouts/Navbar/Navbar";
+import { Navbar } from "./components/layouts/navbar/Navbar";
 import { ItemListContainer } from "./components/pages/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Contacto } from "./components/pages/Contacto/Contacto";
-import { QuienesSomos } from "./components/pages/QuienesSomos/QuienesSomos";
-import { Footer } from "./components/layouts/Footer/Footer";
+import { Contacto } from "./components/pages/contacto/Contacto";
+import { QuienesSomos } from "./components/pages/quienesSomos/QuienesSomos";
+import { Footer } from "./components/layouts/footer/Footer";
 import { Home } from "./components/pages/home/Home";
 import { Cart } from "./components/pages/cart/Cart";
 import { ProductDetail } from "./components/pages/productDetail/ProductDetail";
