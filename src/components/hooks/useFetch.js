@@ -23,6 +23,6 @@ export const useFetch = (endpoint) => {
       };
       fetchData();
     }, 3000);
-  }, [endpoint]);
+  }, []);
   return { data, loading, error };
 };

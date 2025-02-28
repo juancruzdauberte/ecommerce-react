@@ -1,23 +1,28 @@
 import { useState } from "react";
+import "./counter.css";
 
-export const Counter = () => {
-  const [count, setCount] = useState(0);
+export const Counter = ({ item, onChange }) => {
+  const [counter, setCounter] = useState(1);
 
   const suma = () => {
-    setCount(count + 1);
+    if (item.stock > counter) {
+      setCounter(counter + 1);
+      onChange(counter + 1); //creo copia del contador para poder utilizarla en el objeto del producto cuando se le agrega la propiedad de cantidad. O sea, cuando se añade al carrito
+    }
   };
 
   const resta = () => {
-    setCount(count - 1);
+    if (counter > 1) {
+      setCounter(counter - 1);
+      onChange(counter - 1);
+    }
   };
 
   return (
-    <>
-      <div>
-        <h3>{count}</h3>
-        <button onClick={suma}>+</button>
-        <button onClick={resta}>-</button>
-      </div>
-    </>
+    <section className="counter">
+      <button onClick={resta}>-</button>
+      <span>{counter}</span>
+      <button onClick={suma}>+</button>
+    </section>
   );
 };

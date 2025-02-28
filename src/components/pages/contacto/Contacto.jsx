@@ -7,6 +7,8 @@ import { useState } from "react";
 import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
 
 export const Contacto = () => {
+  document.title = "Contacto";
+
   const [userInfo, setUserInfo] = useState({
     nombre: "",
     email: "", //estas propiedades deben ser igual a la de los inputs. ej: name= "email"

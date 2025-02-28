@@ -1,11 +1,15 @@
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import "./cartWidget.css";
+import { CartContext } from "../../../context/CartContext";
+import { useContext } from "react";
 
 export const CartWidget = () => {
+  const { cart } = useContext(CartContext);
+
   return (
     <div className="carrito">
       <PiShoppingCartSimpleLight />
-      <span className="carrito-cantidad">2</span>
+      <span className="carrito-cantidad">{cart.length}</span>
     </div>
   );
 };

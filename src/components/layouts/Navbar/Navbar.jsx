@@ -2,7 +2,7 @@ import "./navbar.css";
 import { CartWidget } from "../../common/widgets/cartWidget/CartWidget";
 import { AccountWidget } from "../../common/widgets/accountWidget/AccountWidget";
 import { SearchWidget } from "../../common/widgets/seachWidget/SearchWidget";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { TbMenu2 } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
 import { RiArrowDownSLine } from "react-icons/ri";

@@ -1,5 +1,4 @@
-import { Navbar } from "./components/layouts/navbar/Navbar";
-import { ItemListContainer } from "./components/pages/itemListContainer/ItemListContainer";
+import { ItemListContainer } from "./components/pages/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Contacto } from "./components/pages/contacto/Contacto";
 import { QuienesSomos } from "./components/pages/quienesSomos/QuienesSomos";
@@ -8,36 +7,40 @@ import { Home } from "./components/pages/home/Home";
 import { Cart } from "./components/pages/cart/Cart";
 import { ProductDetail } from "./components/pages/productDetail/ProductDetail";
 import { Checkout } from "./components/pages/checkout/Checkout";
+import { CartProvider } from "./components/context/CartContext";
+import { Navbar } from "./components/layouts/navbar/Navbar";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        {/* Inicio */}
-        <Route path="/" element={<Home />} />
+      <CartProvider>
+        <Navbar />
+        <Routes>
+          {/* Inicio */}
+          <Route path="/" element={<Home />} />
 
-        {/* Productos */}
-        <Route path="/products" element={<ItemListContainer />} />
-        <Route
-          path="/products/category/:categoryName"
-          element={<ItemListContainer />}
-        />
-        <Route path="/product-detail/:id" element={<ProductDetail />} />
+          {/* Productos */}
+          <Route path="/products" element={<ItemListContainer />} />
+          <Route
+            path="/products/category/:categoryName"
+            element={<ItemListContainer />}
+          />
+          <Route path="/product-detail/:id" element={<ProductDetail />} />
 
-        {/* Carrito */}
-        <Route path="/cart" element={<Cart />} />
+          {/* Carrito */}
+          <Route path="/cart" element={<Cart />} />
 
-        {/* Checkout */}
-        <Route path="/checkout" element={<Checkout />} />
+          {/* Checkout */}
+          <Route path="/checkout" element={<Checkout />} />
 
-        {/* Contacto */}
-        <Route path="/contact" element={<Contacto />} />
+          {/* Contacto */}
+          <Route path="/contact" element={<Contacto />} />
 
-        {/* Quienes somos */}
-        <Route path="/about" element={<QuienesSomos />} />
-      </Routes>
-      <Footer />
+          {/* Quienes somos */}
+          <Route path="/about" element={<QuienesSomos />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   );
 };

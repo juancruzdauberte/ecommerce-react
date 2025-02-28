@@ -3,6 +3,7 @@ import { Carousel } from "../../common/carousel/Carousel";
 import "./home.css";
 
 export const Home = () => {
+  document.title = "Inicio";
   return (
     <main>
       <section className="carousel-container">
