@@ -1,0 +1,120 @@
+.cart-productCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  gap: 15px;
+  max-width: 600px;
+}
+
+.cart-productCard img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cart-productCard h3 {
+  flex: 1; /* Ocupa el espacio restante */
+  font-size: 18px;
+  margin: 0;
+}
+
+.cart-productCard span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.delete-btn {
+  border: none;
+  background-color: white;
+  color: rgba(189, 187, 187, 0.871);
+  cursor: pointer;
+  &:hover {
+    color: rgb(165, 161, 161);
+  }
+}
+
+.cart-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  font-size: 1.3rem;
+
+  button {
+    background-color: black;
+    width: 170px;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    animation: shake 4s infinite;
+    transition: 0.4s;
+
+    &:hover,
+    &:focus {
+      box-shadow: inset 12em 0 0 0 rgba(255, 255, 255, 0.392);
+    }
+    a {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.cart-amountTotal {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  padding: 20px;
+  gap: 20px;
+  align-items: center;
+
+  button {
+    background-color: black;
+    width: 170px;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+  }
+  #btn-comprar {
+    background-color: rgb(49, 218, 49);
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+.cart-totalPrice {
+  display: flex;
+  align-items: center;
+  span {
+    font-size: 1.1rem;
+    position: relative;
+    top: 2px;
+    left: 5px;
+  }
+}
+
+.cart-btns {
+  display: flex;
+  gap: 10px;
+}

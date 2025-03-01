@@ -67,8 +67,8 @@ form {
 }
 
 .label-input input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  border-color: #ba8b65;
+  box-shadow: 0 0 5px rgba(255, 157, 0, 0.232);
 }
 
 .btn-container {

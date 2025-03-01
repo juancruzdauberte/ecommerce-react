@@ -13,10 +13,12 @@ export const ProductDetail = () => {
   const { data: items, loading, error } = useFetch("/products.json");
   const { addToCart } = useContext(CartContext);
   const [countCopy, setCountCopy] = useState(1);
+
   const product = items.find((el) => el.id === parseInt(id));
 
   const onAdd = () => {
     let productObj = { ...product, quantity: countCopy };
+    console.log(productObj);
     addToCart(productObj);
   };
 

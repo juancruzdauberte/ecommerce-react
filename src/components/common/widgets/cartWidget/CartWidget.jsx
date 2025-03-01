@@ -4,12 +4,14 @@ import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
 
 export const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { totalProducts } = useContext(CartContext);
+
+  const totalInCart = totalProducts();
 
   return (
     <div className="carrito">
       <PiShoppingCartSimpleLight />
-      <span className="carrito-cantidad">{cart.length}</span>
+      <span className="carrito-cantidad">{totalInCart}</span>
     </div>
   );
 };

@@ -56,9 +56,30 @@ export function Navbar() {
                 <NavLink to="/products">
                   Productos <RiArrowDownSLine className="dropdown-icon" />
                   <div class="dropdown-content">
-                    <Link to="/products">Todos</Link>
-                    <Link to="/products/category/colgante">Colgantes</Link>
-                    <Link to="/products/category/tapiz">Tapices</Link>
+                    <Link
+                      to="/products"
+                      onClick={() => {
+                        document.title = "Productos";
+                      }}
+                    >
+                      Todos
+                    </Link>
+                    <Link
+                      to="/products/category/colgante"
+                      onClick={() => {
+                        document.title = "Productos - Colgantes";
+                      }}
+                    >
+                      Colgantes
+                    </Link>
+                    <Link
+                      to="/products/category/tapiz"
+                      onClick={() => {
+                        document.title = "Productos - Tapices";
+                      }}
+                    >
+                      Tapices
+                    </Link>
                   </div>
                 </NavLink>
               </li>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./counter.css";
+import { IoIosRemove, IoIosAdd } from "react-icons/io";
 
 export const Counter = ({ item, onChange }) => {
   const [counter, setCounter] = useState(1);
@@ -20,9 +21,15 @@ export const Counter = ({ item, onChange }) => {
 
   return (
     <section className="counter">
-      <button onClick={resta}>-</button>
-      <span>{counter}</span>
-      <button onClick={suma}>+</button>
+      <section className="counter-btns">
+        <button onClick={resta}>
+          <IoIosRemove />
+        </button>
+        <h4>{counter}</h4>
+        <button onClick={suma}>
+          <IoIosAdd />
+        </button>
+      </section>
     </section>
   );
 };

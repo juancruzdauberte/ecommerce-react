@@ -5,6 +5,22 @@
   font-family: "Quicksand", serif;
 }
 
+@keyframes shake {
+  0%,
+  12% {
+    transform: rotate(0);
+  }
+  2%,
+  6%,
+  10% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  4%,
+  8% {
+    transform: translateY(2px) rotate(2deg);
+  }
+}
+
 html,
 body {
   height: 100%;
