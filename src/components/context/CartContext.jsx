@@ -49,6 +49,18 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  const updateQuantity = (productId, newQuantity) => {
+    setCart(
+      (
+        prevCart //prevCart es el carrito actualmente, funcion callback para actualizar la cantidad, recibe por parametro el producto y la cantidad actual del contador para actualizarla
+      ) =>
+        prevCart.map(
+          (item) =>
+            item.id === productId ? { ...item, quantity: newQuantity } : item //si coincide el id actualiza la cantidad del producto
+        )
+    );
+  };
+
   let data = {
     cart,
     addToCart,
@@ -56,6 +68,7 @@ export const CartProvider = ({ children }) => {
     totalAmount,
     totalProducts,
     cartEmpty,
+    updateQuantity,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

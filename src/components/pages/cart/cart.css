@@ -7,9 +7,18 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   gap: 15px;
-  max-width: 600px;
 }
 
+.productCard-amountTotal {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 100px 0px 100px;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+}
 .cart-productCard img {
   width: 80px;
   height: 80px;

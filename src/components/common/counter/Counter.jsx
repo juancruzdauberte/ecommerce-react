@@ -3,7 +3,7 @@ import "./counter.css";
 import { IoIosRemove, IoIosAdd } from "react-icons/io";
 
 export const Counter = ({ item, onChange }) => {
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(item.quantity || 1); //inicializo el contador con la cantidad del producto (si esta en el carrito) o en 1
 
   const suma = () => {
     if (item.stock > counter) {
@@ -25,7 +25,7 @@ export const Counter = ({ item, onChange }) => {
         <button onClick={resta}>
           <IoIosRemove />
         </button>
-        <h4>{counter}</h4>
+        <span>{counter}</span>
         <button onClick={suma}>
           <IoIosAdd />
         </button>
