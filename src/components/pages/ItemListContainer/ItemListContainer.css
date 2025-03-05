@@ -25,3 +25,11 @@
   flex-wrap: wrap;
   gap: 50px;
 }
+
+/* dark mode */
+
+.dark {
+  .filter-container {
+    background-color: #a39e9e;
+  }
+}

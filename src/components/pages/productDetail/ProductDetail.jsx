@@ -6,13 +6,15 @@ import { Counter } from "../../common/counter/Counter";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useState } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const ProductDetail = () => {
   const { id } = useParams();
   console.log(typeof id); //llega como string
   const { data: items, loading, error } = useFetch("/products.json");
-  const { addToCart } = useContext(CartContext);
   const [countCopy, setCountCopy] = useState(1);
+  const { addToCart } = useContext(CartContext);
+  const { theme } = useContext(ThemeContext);
 
   const product = items.find((el) => el.id === parseInt(id));
 
@@ -23,7 +25,7 @@ export const ProductDetail = () => {
   };
 
   return (
-    <main>
+    <main className={theme}>
       {loading ? (
         <LoadingWidget text="producto" />
       ) : (

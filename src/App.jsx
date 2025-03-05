@@ -9,38 +9,41 @@ import { ProductDetail } from "./components/pages/productDetail/ProductDetail";
 import { Checkout } from "./components/pages/checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import { Navbar } from "./components/layouts/navbar/Navbar";
+import { ThemeProvider } from "./components/context/ThemeContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Navbar />
-        <Routes>
-          {/* Inicio */}
-          <Route path="/" element={<Home />} />
+      <ThemeProvider>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            {/* Inicio */}
+            <Route path="/" element={<Home />} />
 
-          {/* Productos */}
-          <Route path="/products" element={<ItemListContainer />} />
-          <Route
-            path="/products/category/:categoryName"
-            element={<ItemListContainer />}
-          />
-          <Route path="/product-detail/:id" element={<ProductDetail />} />
+            {/* Productos */}
+            <Route path="/products" element={<ItemListContainer />} />
+            <Route
+              path="/products/category/:categoryName"
+              element={<ItemListContainer />}
+            />
+            <Route path="/product-detail/:id" element={<ProductDetail />} />
 
-          {/* Carrito */}
-          <Route path="/cart" element={<Cart />} />
+            {/* Carrito */}
+            <Route path="/cart" element={<Cart />} />
 
-          {/* Checkout */}
-          <Route path="/checkout" element={<Checkout />} />
+            {/* Checkout */}
+            <Route path="/checkout" element={<Checkout />} />
 
-          {/* Contacto */}
-          <Route path="/contact" element={<Contacto />} />
+            {/* Contacto */}
+            <Route path="/contact" element={<Contacto />} />
 
-          {/* Quienes somos */}
-          <Route path="/about" element={<QuienesSomos />} />
-        </Routes>
-        <Footer />
-      </CartProvider>
+            {/* Quienes somos */}
+            <Route path="/about" element={<QuienesSomos />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 };

@@ -3,18 +3,22 @@ import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useFetch } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const ItemListContainer = () => {
   const { data: products, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
   const { categoryName } = useParams();
   console.log(categoryName);
 
+  const { theme } = useContext(ThemeContext);
+
   const productosFiltrados = categoryName
     ? products.filter((product) => product.category === categoryName) //si existe el parametro muestro los productos que tengan el mismo nombre de categoria que el parametro, sino muestro todos los productos
     : products;
 
   return (
-    <main>
+    <main className={theme}>
       <section className="titlePage">
         <h1>Productos</h1>
       </section>

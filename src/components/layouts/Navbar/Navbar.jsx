@@ -6,10 +6,13 @@ import { useState, useEffect, useContext } from "react";
 import { TbMenu2 } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { BtnMode } from "../../common/btnMode/BtnMode";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -21,7 +24,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header id="header">
+    <header id="header" className={theme}>
       <section className="logo-titulo">
         {isMobile ? (
           <Link to="/">
@@ -49,6 +52,9 @@ export function Navbar() {
         <section>
           <nav className={`navbar ${menuOpen ? "open" : " "}`}>
             <ul>
+              <li>
+                <BtnMode />
+              </li>
               <li>
                 <NavLink to="/">Inicio</NavLink>
               </li>

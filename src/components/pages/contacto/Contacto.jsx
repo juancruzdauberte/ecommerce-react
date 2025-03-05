@@ -3,10 +3,13 @@ import { EmailWidget } from "../../common/widgets/emailWidget/EmailWidget";
 import { InstagramWidget } from "../../common/widgets/instagramWidget/InstagramWidget";
 import { WppWidget } from "../../common/widgets/wppWidget/WppWidget";
 import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const Contacto = () => {
+  const { theme } = useContext(ThemeContext);
+
   document.title = "Contacto";
 
   const [userInfo, setUserInfo] = useState({
@@ -26,7 +29,7 @@ export const Contacto = () => {
   };
 
   return (
-    <main>
+    <main className={theme}>
       <section className="contacto">
         <section className="titlePage">
           <h1>Contacto</h1>

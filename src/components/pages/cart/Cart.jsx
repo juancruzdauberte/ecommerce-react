@@ -4,14 +4,17 @@ import { useContext } from "react";
 import { DeleteProduct } from "../../common/widgets/deleteProduct/DeleteProduct";
 import { NavLink, Link } from "react-router-dom";
 import { Counter } from "../../common/counter/Counter";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const Cart = () => {
   const { cart, removeById, totalAmount, cartEmpty, updateQuantity } =
     useContext(CartContext);
 
+  const { theme } = useContext(ThemeContext);
+
   let total = totalAmount();
   return (
-    <main>
+    <main className={theme}>
       <section className="titlePage">
         <h1>Carrito</h1>
       </section>

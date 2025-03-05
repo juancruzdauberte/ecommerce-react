@@ -1,9 +1,12 @@
 import { createContext, useState } from "react";
 
-const ThemeContext = createContext();
+export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState("light");
+  const [themeBtn, setThemeBtn] = useState(false);
 
-  return <ThemeContext.Provider>{children}</ThemeContext.Provider>;
+  let data = { theme, setTheme, themeBtn, setThemeBtn };
+
+  return <ThemeContext.Provider value={data}>{children}</ThemeContext.Provider>;
 };

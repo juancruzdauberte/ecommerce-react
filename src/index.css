@@ -80,3 +80,11 @@ nav a.active:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.dark {
+  background-color: #121212;
+}
+
+.light {
+  background-color: #fff;
+}
