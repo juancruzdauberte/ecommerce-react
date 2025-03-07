@@ -1,4 +1,4 @@
-import { ItemListContainer } from "./components/pages/ItemListContainer/ItemListContainer";
+import { ItemListContainer } from "./components/pages/itemListContainer/ItemListContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Contacto } from "./components/pages/contacto/Contacto";
 import { QuienesSomos } from "./components/pages/quienesSomos/QuienesSomos";
@@ -10,6 +10,7 @@ import { Checkout } from "./components/pages/checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import { Navbar } from "./components/layouts/navbar/Navbar";
 import { ThemeProvider } from "./components/context/ThemeContext";
+import { NewProduct } from "./components/pages/newProduct/NewProduct";
 
 const App = () => {
   return (
@@ -28,6 +29,8 @@ const App = () => {
               element={<ItemListContainer />}
             />
             <Route path="/product-detail/:id" element={<ProductDetail />} />
+
+            <Route path="/products/new-product" element={<NewProduct />} />
 
             {/* Carrito */}
             <Route path="/cart" element={<Cart />} />

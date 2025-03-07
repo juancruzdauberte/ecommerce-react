@@ -1,22 +1,36 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
 import "./productDetail.css";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { Counter } from "../../common/counter/Counter";
-import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { db } from "../../../firebase";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { useEffect, useState, useContext } from "react";
 
 export const ProductDetail = () => {
   const { id } = useParams();
-  console.log(typeof id); //llega como string
-  const { data: items, loading, error } = useFetch("/products.json");
+  const [item, setItem] = useState({});
+  console.log(id); //llega como string
   const [countCopy, setCountCopy] = useState(1);
+  const [loading, setLoading] = useState(true);
+
   const { addToCart } = useContext(CartContext);
   const { theme } = useContext(ThemeContext);
 
-  const product = items.find((el) => el.id === parseInt(id));
+  useEffect(() => {
+    let refCollection = collection(db, "products");
+    let refDoc = doc(refCollection, id);
+    const getProductById = getDoc(refDoc);
+    getProductById
+      .then((res) => {
+        res.exists()
+          ? setItem({ id: getProductById.id, ...res.data() })
+          : console.log("producto no encontrado");
+      })
+      .catch((err) => console.error(err))
+      .finally(setLoading(false));
+  }, [id]);
 
   const onAdd = () => {
     let productObj = { ...product, quantity: countCopy };
@@ -29,16 +43,16 @@ export const ProductDetail = () => {
       {loading ? (
         <LoadingWidget text="producto" />
       ) : (
-        <article className="productDetail-card" key={product.id}>
+        <article className="productDetail-card" key={item.id}>
           <section className="productDetail-image">
-            <img src={product.url} alt={product.name} />
+            <img src={item.url} alt={item.title} />
           </section>
           <section className="productDetail-info">
-            <h1>{product.title}</h1>
-            <p>{product.description}</p>
-            <span>${product.price}</span>
+            <h1>{item.title}</h1>
+            <p>{item.description}</p>
+            <span>${item.price}</span>
             <div>
-              <Counter item={product} onChange={setCountCopy} />
+              <Counter item={item} onChange={setCountCopy} />
             </div>
             <button onClick={onAdd}>Añadir al carrito</button>
           </section>

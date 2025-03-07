@@ -1,21 +1,40 @@
 import "./ItemListContainer.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
-import { useFetch } from "../../hooks/useFetch";
-import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { db } from "../../../firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export const ItemListContainer = () => {
-  const { data: products, loading, error } = useFetch("/public/products.json"); //peticion a public/products.json
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const { categoryName } = useParams();
+
   console.log(categoryName);
+
+  useEffect(() => {
+    let refCollection = collection(db, "products");
+    const getProducts = getDocs(refCollection);
+    getProducts
+      .then((res) => {
+        const nuevoArrayItems = res.docs.map((el) => {
+          return { id: el.id, ...el.data() };
+        });
+        setItems(nuevoArrayItems);
+      })
+      .catch((error) => setError(error))
+      .finally(setLoading(false));
+  }, []);
 
   const { theme } = useContext(ThemeContext);
 
   const productosFiltrados = categoryName
-    ? products.filter((product) => product.category === categoryName) //si existe el parametro muestro los productos que tengan el mismo nombre de categoria que el parametro, sino muestro todos los productos
-    : products;
+    ? items.filter((product) => product.category === categoryName) //si existe el parametro muestro los productos que tengan el mismo nombre de categoria que el parametro, sino muestro todos los productos
+    : items;
 
   return (
     <main className={theme}>
@@ -58,6 +77,7 @@ export const ItemListContainer = () => {
               {productosFiltrados.map((item) => (
                 <ProductCard key={item.id} product={item} />
               ))}
+              {console.log(items)}
             </section>
           }
         </section>
