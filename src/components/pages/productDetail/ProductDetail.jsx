@@ -10,30 +10,35 @@ import { useEffect, useState, useContext } from "react";
 
 export const ProductDetail = () => {
   const { id } = useParams();
-  const [item, setItem] = useState({});
   console.log(id); //llega como string
-  const [countCopy, setCountCopy] = useState(1);
-  const [loading, setLoading] = useState(true);
-
+  const [item, setItem] = useState({});
   const { addToCart } = useContext(CartContext);
   const { theme } = useContext(ThemeContext);
 
+  const [countCopy, setCountCopy] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    let refCollection = collection(db, "products");
-    let refDoc = doc(refCollection, id);
-    const getProductById = getDoc(refDoc);
-    getProductById
-      .then((res) => {
+    const getProductByID = async () => {
+      try {
+        let refCollection = collection(db, "products"); //referencia a la coleccion de "productos"
+        let refDoc = doc(refCollection, id); //referencia al documento que se encuentra dentro de la coleccion "productos" usando su ID
+        const res = await getDoc(refDoc); //obtengo el producto que hice referencia anteriormente mediante su ID
         res.exists()
-          ? setItem({ id: getProductById.id, ...res.data() })
+          ? setItem({ id: res.id, ...res.data() }) //seteo el item con el ID proporcionado y me traigo el objeto completo que se encuentra en data
           : console.log("producto no encontrado");
-      })
-      .catch((err) => console.error(err))
-      .finally(setLoading(false));
-  }, [id]);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getProductByID();
+  }, []);
 
   const onAdd = () => {
-    let productObj = { ...product, quantity: countCopy };
+    let productObj = { ...item, quantity: countCopy };
     console.log(productObj);
     addToCart(productObj);
   };

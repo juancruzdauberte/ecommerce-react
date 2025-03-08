@@ -10,7 +10,6 @@ import { Checkout } from "./components/pages/checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import { Navbar } from "./components/layouts/navbar/Navbar";
 import { ThemeProvider } from "./components/context/ThemeContext";
-import { NewProduct } from "./components/pages/newProduct/NewProduct";
 
 const App = () => {
   return (
@@ -29,8 +28,6 @@ const App = () => {
               element={<ItemListContainer />}
             />
             <Route path="/product-detail/:id" element={<ProductDetail />} />
-
-            <Route path="/products/new-product" element={<NewProduct />} />
 
             {/* Carrito */}
             <Route path="/cart" element={<Cart />} />

@@ -1,11 +1,11 @@
 import "./ItemListContainer.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { db } from "../../../firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -17,17 +17,21 @@ export const ItemListContainer = () => {
   console.log(categoryName);
 
   useEffect(() => {
-    let refCollection = collection(db, "products");
-    const getProducts = getDocs(refCollection);
-    getProducts
-      .then((res) => {
+    const getProducts = async () => {
+      try {
+        let refCollection = collection(db, "products");
+        const res = await getDocs(refCollection);
         const nuevoArrayItems = res.docs.map((el) => {
           return { id: el.id, ...el.data() };
         });
         setItems(nuevoArrayItems);
-      })
-      .catch((error) => setError(error))
-      .finally(setLoading(false));
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getProducts();
   }, []);
 
   const { theme } = useContext(ThemeContext);

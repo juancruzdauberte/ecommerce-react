@@ -1,0 +1,10 @@
+.form-finalizarCompra {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 100px 0px 100px;
+}
+
+.form-finalizarCompra .productCard-amountTotal {
+  display: flex;
+  flex-direction: column;
+}
