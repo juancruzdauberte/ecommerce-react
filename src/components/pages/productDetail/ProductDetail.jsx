@@ -7,6 +7,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { db } from "../../../firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
+import { useLoading } from "../../hooks/useLoading";
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -14,13 +15,13 @@ export const ProductDetail = () => {
   const [item, setItem] = useState({});
   const { addToCart } = useContext(CartContext);
   const { theme } = useContext(ThemeContext);
-
   const [countCopy, setCountCopy] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const { loadingTrue, loading, loadingFalse } = useLoading();
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const getProductByID = async () => {
+      loadingTrue(); //seteo el loading en true para que me muestre la respectiva interfaz
       try {
         let refCollection = collection(db, "products"); //referencia a la coleccion de "productos"
         let refDoc = doc(refCollection, id); //referencia al documento que se encuentra dentro de la coleccion "productos" usando su ID
@@ -31,7 +32,7 @@ export const ProductDetail = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setLoading(false);
+        loadingFalse(); //cuando se resuelva la promesa se setea en false para que no se muestre
       }
     };
     getProductByID();
@@ -46,7 +47,7 @@ export const ProductDetail = () => {
   return (
     <main className={theme}>
       {loading ? (
-        <LoadingWidget text="producto" />
+        <LoadingWidget text="Cargando producto..." />
       ) : (
         <article className="productDetail-card" key={item.id}>
           <section className="productDetail-image">

@@ -6,10 +6,12 @@ import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { db } from "../../../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { useLoading } from "../../hooks/useLoading";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { loadingTrue, loading, loadingFalse } = useLoading();
+
   const [error, setError] = useState(null);
 
   const { categoryName } = useParams();
@@ -18,6 +20,7 @@ export const ItemListContainer = () => {
 
   useEffect(() => {
     const getProducts = async () => {
+      loadingTrue();
       try {
         let refCollection = collection(db, "products");
         const res = await getDocs(refCollection);
@@ -28,7 +31,7 @@ export const ItemListContainer = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setLoading(false);
+        loadingFalse();
       }
     };
     getProducts();
@@ -68,7 +71,7 @@ export const ItemListContainer = () => {
         </section>
 
         <section className="item-list-container">
-          {loading && <LoadingWidget text="productos" />}
+          {loading && <LoadingWidget text="Cargando productos..." />}
 
           {error && (
             <section>

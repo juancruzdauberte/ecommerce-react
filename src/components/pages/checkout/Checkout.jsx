@@ -2,14 +2,16 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { addDoc, collection } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
+import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
+import { useLoading } from "../../hooks/useLoading";
 import { db } from "../../../firebase";
 import "./checkout.css";
 
 export const Checkout = () => {
-  document.title = "Checkout";
   const { theme } = useContext(ThemeContext);
   const { cart, totalAmount, cartEmpty } = useContext(CartContext);
   const [orderID, setOrderId] = useState(null);
+  const { loadingTrue, loading, loadingFalse } = useLoading();
 
   const [userInfo, setUserInfo] = useState({
     nombre: "",
@@ -29,12 +31,24 @@ export const Checkout = () => {
       total,
     };
 
-    let ordersCollection = collection(db, "orders");
-    let promesaCompra = addDoc(ordersCollection, order);
-
-    promesaCompra.then((res) => {
-      setOrderId(res.id);
-      cartEmpty();
+    const submitOrder = async () => {
+      loadingTrue();
+      try {
+        const ordersCollection = collection(db, "orders");
+        const res = await addDoc(ordersCollection, order);
+        setOrderId(res.id);
+        return res; //retorno el id para luego resolver la promesa indicandole que cambie el titulo del documento
+      } catch (error) {
+        console.error(error);
+      } finally {
+        loadingFalse();
+      }
+    };
+    submitOrder().then((res) => {
+      cartEmpty(); //luego de la compra vacio el carrito
+      if (res) {
+        document.title = `Order: ${res.id}`; //cambio el titulo del documento
+      }
     });
   };
 
@@ -44,10 +58,12 @@ export const Checkout = () => {
   };
   return (
     <main className={theme}>
-      {orderID ? (
+      {loading ? (
+        <LoadingWidget text="Finalizando compra..." />
+      ) : orderID ? (
         <section>
           <h1>Gracias por tu compra!</h1>
-          <p>El identificador de tu compra es el siguiente {orderID}</p>
+          <p>El identificador de tu compra es el siguiente: {orderID}</p>
         </section>
       ) : (
         <section className="form-finalizarCompra">

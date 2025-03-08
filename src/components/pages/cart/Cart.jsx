@@ -7,6 +7,7 @@ import { Counter } from "../../common/counter/Counter";
 import { ThemeContext } from "../../context/ThemeContext";
 
 export const Cart = () => {
+  document.title = "Carrito";
   const { cart, removeById, totalAmount, cartEmpty, updateQuantity } =
     useContext(CartContext);
 
@@ -61,7 +62,14 @@ export const Cart = () => {
             </div>
             <div className="cart-btns">
               <button id="btn-comprar">
-                <Link to="/checkout">Terminar compra</Link>
+                <Link
+                  to="/checkout"
+                  onClick={() => {
+                    document.title = "Checkout";
+                  }}
+                >
+                  Terminar compra
+                </Link>
               </button>
               <button onClick={cartEmpty}>Vaciar carrito</button>
             </div>
