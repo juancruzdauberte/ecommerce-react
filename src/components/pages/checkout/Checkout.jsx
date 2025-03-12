@@ -4,14 +4,18 @@ import { addDoc, collection } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useLoading } from "../../hooks/useLoading";
+import { useError } from "../../hooks/useError";
 import { db } from "../../../firebase";
 import "./checkout.css";
+import { Formulario } from "../../layouts/formulario/Formulario";
+import { NavLink } from "react-router-dom";
 
 export const Checkout = () => {
   const { theme } = useContext(ThemeContext);
   const { cart, totalAmount, cartEmpty } = useContext(CartContext);
   const [orderID, setOrderId] = useState(null);
   const { loadingTrue, loading, loadingFalse } = useLoading();
+  const { error, setError } = useError();
 
   const [userInfo, setUserInfo] = useState({
     nombre: "",
@@ -19,6 +23,17 @@ export const Checkout = () => {
     dni: "",
     telefono: "",
   });
+
+  const campos = [
+    {
+      label: "Nombre y apellido",
+      name: "nombre",
+      placeholder: "Nombre y apellido",
+    },
+    { label: "DNI", name: "dni", placeholder: "DNI" },
+    { label: "Email", name: "email", placeholder: "Email" },
+    { label: "Telefono", name: "telefono", placeholder: "Telefono" },
+  ];
 
   let total = totalAmount();
 
@@ -39,7 +54,7 @@ export const Checkout = () => {
         setOrderId(res.id);
         return res; //retorno el id para luego resolver la promesa indicandole que cambie el titulo del documento
       } catch (error) {
-        console.error(error);
+        setError(error);
       } finally {
         loadingFalse();
       }
@@ -61,54 +76,27 @@ export const Checkout = () => {
       {loading ? (
         <LoadingWidget text="Finalizando compra..." />
       ) : orderID ? (
-        <section>
+        <section className="submit-order">
           <h1>Gracias por tu compra!</h1>
-          <p>El identificador de tu compra es el siguiente: {orderID}</p>
+          <div className="id-compra">
+            <p>
+              El identificador de tu compra es el siguiente:
+              <span>{orderID}</span>
+            </p>
+          </div>
+          <button>
+            <NavLink to="/products">Ver más productos</NavLink>
+          </button>
         </section>
       ) : (
         <section className="form-finalizarCompra">
           <section className="formulario-container">
-            <form onSubmit={funcionForm}>
-              <div className="label-input">
-                <label>Nombre y apellido</label>
-                <input
-                  type="text"
-                  placeholder="Nombre"
-                  name="nombre"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="label-input">
-                <label>Email</label>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  name="email"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="label-input">
-                <label>DNI</label>
-                <input
-                  type="number"
-                  placeholder="DNI"
-                  name="dni"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="label-input">
-                <label>Telefono</label>
-                <input
-                  type="number"
-                  placeholder="Telefono"
-                  name="telefono"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="btn-container">
-                <button type="submit">Comprar</button>
-              </div>
-            </form>
+            <Formulario
+              campos={campos}
+              funcionForm={funcionForm}
+              funcionInput={funcionInput}
+              btnText="Comprar"
+            />
           </section>
           <section className="productCard-amountTotal">
             <section>
@@ -133,6 +121,8 @@ export const Checkout = () => {
           </section>
         </section>
       )}
+
+      {error && <section>Error al finalizar la compra {error}</section>}
     </main>
   );
 };

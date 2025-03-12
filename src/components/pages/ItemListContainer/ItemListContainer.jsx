@@ -7,12 +7,12 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { db } from "../../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useLoading } from "../../hooks/useLoading";
+import { useError } from "../../hooks/useError";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { loadingTrue, loading, loadingFalse } = useLoading();
-
-  const [error, setError] = useState(null);
+  const { error, setError } = useError();
 
   const { categoryName } = useParams();
 
@@ -75,7 +75,7 @@ export const ItemListContainer = () => {
 
           {error && (
             <section>
-              <p>Error al cargar los productos: {error.message}</p>
+              <p>Error al cargar los productos: {error}</p>
             </section>
           )}
 

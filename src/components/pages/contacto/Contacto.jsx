@@ -6,6 +6,7 @@ import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
 import { useState, useContext } from "react";
 import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
 import { ThemeContext } from "../../context/ThemeContext";
+import { Formulario } from "../../layouts/formulario/Formulario";
 
 export const Contacto = () => {
   const { theme } = useContext(ThemeContext);
@@ -17,6 +18,16 @@ export const Contacto = () => {
     email: "", //estas propiedades deben ser igual a la de los inputs. ej: name= "email"
     mensaje: "",
   });
+
+  const campos = [
+    {
+      label: "Nombre y apellido",
+      name: "nombre",
+      placeholder: "Nombre y apellido",
+    },
+    { label: "Email", name: "email", placeholder: " email" },
+    { label: "Mensaje", name: "mensaje", placeholder: "Mensaje" },
+  ];
 
   const funcionForm = (evento) => {
     evento.preventDefault();
@@ -86,38 +97,12 @@ export const Contacto = () => {
           </section>
 
           <section className="formulario-container">
-            <form onSubmit={funcionForm}>
-              <div className="label-input">
-                <label>Nombre y apellido</label>
-                <input
-                  type="text"
-                  placeholder="Nombre"
-                  name="nombre"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="label-input">
-                <label>Email</label>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  name="email"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="label-input">
-                <label>Mensaje</label>
-                <input
-                  type="text"
-                  placeholder="Mensaje"
-                  name="mensaje"
-                  onChange={funcionInput}
-                />
-              </div>
-              <div className="btn-container">
-                <button type="submit">Enviar</button>
-              </div>
-            </form>
+            <Formulario
+              funcionForm={funcionForm}
+              funcionInput={funcionInput}
+              btnText="Enviar"
+              campos={campos}
+            />
           </section>
         </section>
       </section>

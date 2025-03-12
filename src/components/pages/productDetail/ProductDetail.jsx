@@ -8,6 +8,7 @@ import { db } from "../../../firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
 import { useLoading } from "../../hooks/useLoading";
+import { useError } from "../../hooks/useError";
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ export const ProductDetail = () => {
   const { theme } = useContext(ThemeContext);
   const [countCopy, setCountCopy] = useState(1);
   const { loadingTrue, loading, loadingFalse } = useLoading();
-  const [error, setError] = useState(null);
+  const { error, setError } = useError();
 
   useEffect(() => {
     const getProductByID = async () => {
@@ -64,6 +65,8 @@ export const ProductDetail = () => {
           </section>
         </article>
       )}
+
+      {error && <section>Error al cargar el producto {error}</section>}
     </main>
   );
 };
