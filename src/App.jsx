@@ -10,10 +10,12 @@ import { Checkout } from "./components/pages/checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import { Navbar } from "./components/layouts/navbar/Navbar";
 import { ThemeProvider } from "./components/context/ThemeContext";
+import { Toaster } from "sonner";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Toaster richColors duration={2500} />
       <ThemeProvider>
         <CartProvider>
           <Navbar />

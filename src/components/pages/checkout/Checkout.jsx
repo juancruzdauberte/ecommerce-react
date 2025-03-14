@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, updateDoc, doc, collection } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useLoading } from "../../hooks/useLoading";
@@ -9,6 +9,7 @@ import { db } from "../../../firebase";
 import "./checkout.css";
 import { Formulario } from "../../layouts/formulario/Formulario";
 import { NavLink } from "react-router-dom";
+import { toast } from "sonner";
 
 export const Checkout = () => {
   const { theme } = useContext(ThemeContext);
@@ -62,8 +63,17 @@ export const Checkout = () => {
     submitOrder().then((res) => {
       cartEmpty(); //luego de la compra vacio el carrito
       if (res) {
+        toast.success(`Compra finalizada exitosamente. Id: ${res.id}`);
         document.title = `Order: ${res.id}`; //cambio el titulo del documento
       }
+
+      let productsCollection = collection(db, "products"); //referencio la coleccion de productos
+
+      order.items.forEach((product) => {
+        //recorro el arreglo de la orden para actualizar el stock del producto una vez que ya se haya hecho la misma
+        let productRef = doc(productsCollection, product.id); //referencio el producto con su id
+        updateDoc(productRef, { stock: product.stock - product.quantity }); //actualizo el documento referenciado restando stock y la cantidad que se compro
+      });
     });
   };
 
@@ -122,7 +132,13 @@ export const Checkout = () => {
         </section>
       )}
 
-      {error && <section>Error al finalizar la compra {error}</section>}
+      {error && (
+        <section>
+          {() => {
+            toast.error(`Hubo un error al hacer la compra: ${error}`);
+          }}
+        </section>
+      )}
     </main>
   );
 };

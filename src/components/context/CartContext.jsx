@@ -27,7 +27,6 @@ export const CartProvider = ({ children }) => {
   const removeById = (id) => {
     let newCart = cart.filter((el) => el.id !== id);
     setCart(newCart);
-    console.log(id);
   };
 
   const totalAmount = () => {

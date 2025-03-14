@@ -5,6 +5,7 @@ import { DeleteProduct } from "../../common/widgets/deleteProduct/DeleteProduct"
 import { NavLink, Link } from "react-router-dom";
 import { Counter } from "../../common/counter/Counter";
 import { ThemeContext } from "../../context/ThemeContext";
+import { toast } from "sonner";
 
 export const Cart = () => {
   document.title = "Carrito";
@@ -46,7 +47,12 @@ export const Cart = () => {
                 </div>
 
                 <button
-                  onClick={() => removeById(product.id)}
+                  onClick={() => {
+                    removeById(product.id);
+                    toast.success(
+                      "Producto eliminado del carrito exitosamente"
+                    );
+                  }}
                   className="delete-btn"
                 >
                   <DeleteProduct />
@@ -71,7 +77,14 @@ export const Cart = () => {
                   Terminar compra
                 </Link>
               </button>
-              <button onClick={cartEmpty}>Vaciar carrito</button>
+              <button
+                onClick={() => {
+                  cartEmpty();
+                  toast.success("El carrito se vació exitosamente");
+                }}
+              >
+                Vaciar carrito
+              </button>
             </div>
           </section>
         </section>

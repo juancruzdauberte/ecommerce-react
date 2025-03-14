@@ -7,6 +7,7 @@ import { useState, useContext } from "react";
 import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
 import { ThemeContext } from "../../context/ThemeContext";
 import { Formulario } from "../../layouts/formulario/Formulario";
+import { toast } from "sonner";
 
 export const Contacto = () => {
   const { theme } = useContext(ThemeContext);
@@ -31,7 +32,8 @@ export const Contacto = () => {
 
   const funcionForm = (evento) => {
     evento.preventDefault();
-    console.log(userInfo);
+    evento.target.reset();
+    toast.success("Mensaje enviado exitosamente");
   };
 
   const funcionInput = (evento) => {

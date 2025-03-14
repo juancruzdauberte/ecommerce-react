@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./productDetail.css";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { Counter } from "../../common/counter/Counter";
@@ -9,6 +9,7 @@ import { collection, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
 import { useLoading } from "../../hooks/useLoading";
 import { useError } from "../../hooks/useError";
+import { toast } from "sonner";
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -20,6 +21,8 @@ export const ProductDetail = () => {
   const { loadingTrue, loading, loadingFalse } = useLoading();
   const { error, setError } = useError();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getProductByID = async () => {
       loadingTrue(); //seteo el loading en true para que me muestre la respectiva interfaz
@@ -29,7 +32,7 @@ export const ProductDetail = () => {
         const res = await getDoc(refDoc); //obtengo el producto que hice referencia anteriormente mediante su ID
         res.exists()
           ? setItem({ id: res.id, ...res.data() }) //seteo el item con el ID proporcionado y me traigo el objeto completo que se encuentra en data
-          : console.log("producto no encontrado");
+          : toast.error("No se encontro el producto");
       } catch (error) {
         setError(error);
       } finally {
@@ -61,12 +64,30 @@ export const ProductDetail = () => {
             <div>
               <Counter item={item} onChange={setCountCopy} />
             </div>
-            <button onClick={onAdd}>Añadir al carrito</button>
+            <button
+              onClick={() => {
+                onAdd();
+                toast.success("Producto añadido al carrito exitosamente", {
+                  action: {
+                    label: "Ver carrito",
+                    onClick: () => navigate("/cart"),
+                  },
+                });
+              }}
+            >
+              Añadir al carrito
+            </button>
           </section>
         </article>
       )}
 
-      {error && <section>Error al cargar el producto {error}</section>}
+      {error && (
+        <section>
+          {() => {
+            toast.error(`Error al cargar el producto ${error}`);
+          }}
+        </section>
+      )}
     </main>
   );
 };
