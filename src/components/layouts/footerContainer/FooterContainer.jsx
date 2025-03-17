@@ -1,11 +1,11 @@
-import "./footer.css";
+import "./footerContainer.css";
 import { InstagramWidget } from "../../common/widgets/instagramWidget/InstagramWidget";
 import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidget";
 import { EmailWidget } from "../../common/widgets/emailWidget/EmailWidget";
 import { NavLink } from "react-router-dom";
 import { TikTokWidget } from "../../common/widgets/tiktokWidget/TikTokWidget";
 
-export function Footer() {
+export function FooterContainer() {
   const copyright = String.fromCodePoint(0x00a9);
 
   return (

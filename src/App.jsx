@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Contacto } from "./components/pages/contacto/Contacto";
 import { QuienesSomos } from "./components/pages/quienesSomos/QuienesSomos";
-import { Footer } from "./components/layouts/footer/Footer";
 import { Home } from "./components/pages/home/Home";
 import { Cart } from "./components/pages/cart/Cart";
 import { ProductDetail } from "./components/pages/productDetail/ProductDetail";
@@ -13,6 +12,7 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "./components/context/AuthContext";
 import { ProductList } from "./components/pages/productList/ProductList";
 import { Header } from "./components/layouts/header/Header";
+import { FooterContainer } from "./components/layouts/footerContainer/FooterContainer";
 
 const App = () => {
   return (
@@ -48,7 +48,7 @@ const App = () => {
               {/* Quienes somos */}
               <Route path="/about" element={<QuienesSomos />} />
             </Routes>
-            <Footer />
+            <FooterContainer />
           </CartProvider>
         </ThemeProvider>
       </AuthProvider>
