@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./header.css";
 import { CartWidget } from "../../common/widgets/cartWidget/CartWidget";
 import { AccountWidget } from "../../common/widgets/accountWidget/AccountWidget";
 import { SearchWidget } from "../../common/widgets/seachWidget/SearchWidget";
@@ -9,7 +9,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { BtnMode } from "../../common/btnMode/BtnMode";
 import { ThemeContext } from "../../context/ThemeContext";
 
-export function Navbar() {
+export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { theme } = useContext(ThemeContext);
@@ -44,7 +44,7 @@ export function Navbar() {
           </section>
         )}
         <h1>
-          <Link to="/">Tierra de Nudos</Link>
+          <Link to="/home">Tierra de Nudos</Link>
         </h1>
       </section>
 
@@ -58,37 +58,38 @@ export function Navbar() {
               <li>
                 <NavLink to="/">Inicio</NavLink>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <NavLink to="/products">
                   Productos <RiArrowDownSLine className="dropdown-icon" />
-                  <div class="dropdown-content">
-                    <Link
-                      to="/products"
-                      onClick={() => {
-                        document.title = "Productos";
-                      }}
-                    >
-                      Todos
-                    </Link>
-                    <Link
-                      to="/products/category/colgante"
-                      onClick={() => {
-                        document.title = "Productos - Colgantes";
-                      }}
-                    >
-                      Colgantes
-                    </Link>
-                    <Link
-                      to="/products/category/tapiz"
-                      onClick={() => {
-                        document.title = "Productos - Tapices";
-                      }}
-                    >
-                      Tapices
-                    </Link>
-                  </div>
                 </NavLink>
+                <div className="dropdown-content">
+                  <Link
+                    to="/products"
+                    onClick={() => {
+                      document.title = "Productos";
+                    }}
+                  >
+                    Todos
+                  </Link>
+                  <Link
+                    to="/products/category/colgante"
+                    onClick={() => {
+                      document.title = "Productos - Colgantes";
+                    }}
+                  >
+                    Colgantes
+                  </Link>
+                  <Link
+                    to="/products/category/tapiz"
+                    onClick={() => {
+                      document.title = "Productos - Tapices";
+                    }}
+                  >
+                    Tapices
+                  </Link>
+                </div>
               </li>
+
               <li>
                 <NavLink to="/contact">Contacto</NavLink>
               </li>

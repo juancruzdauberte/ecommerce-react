@@ -44,9 +44,12 @@ export const ProductDetail = () => {
 
   const onAdd = () => {
     let productObj = { ...item, quantity: countCopy };
-    console.log(productObj);
     addToCart(productObj);
   };
+
+  if (countCopy === item.stock) {
+    toast.warning("Seleccionaste la cantidad máxima disponible del producto");
+  }
 
   return (
     <main className={theme}>

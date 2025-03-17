@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
     let productoEnCarrito = cart.some((el) => el.id === product.id); //busco si esta el producto en el carrito mediante su id
 
     if (productoEnCarrito) {
-      console.log(productoEnCarrito);
       let newCart = cart.map((el) => {
         //si exites creo un nuevo array donde si el id del producto es igual al que esta en el carrito, hago la copia del producto y le sumo la cantidad preva que tenia con la actual
         if (el.id === product.id) {

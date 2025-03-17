@@ -8,6 +8,8 @@ import { FacebookWidget } from "../../common/widgets/facebookWidget/FacebookWidg
 import { ThemeContext } from "../../context/ThemeContext";
 import { Formulario } from "../../layouts/formulario/Formulario";
 import { toast } from "sonner";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 export const Contacto = () => {
   const { theme } = useContext(ThemeContext);
@@ -34,6 +36,9 @@ export const Contacto = () => {
     evento.preventDefault();
     evento.target.reset();
     toast.success("Mensaje enviado exitosamente");
+
+    let mensageCollection = collection(db, "userMensage");
+    addDoc(mensageCollection, userInfo);
   };
 
   const funcionInput = (evento) => {

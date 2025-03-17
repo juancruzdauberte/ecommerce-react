@@ -1,4 +1,4 @@
-import "./ItemListContainer.css";
+import "./productList.css";
 import { ProductCard } from "../../common/productCard/ProductCard";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useParams } from "react-router-dom";
@@ -9,14 +9,11 @@ import { collection, getDocs } from "firebase/firestore";
 import { useLoading } from "../../hooks/useLoading";
 import { useError } from "../../hooks/useError";
 
-export const ItemListContainer = () => {
+export const ProductList = () => {
   const [items, setItems] = useState([]);
   const { loadingTrue, loading, loadingFalse } = useLoading();
   const { error, setError } = useError();
-
   const { categoryName } = useParams();
-
-  console.log(categoryName);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -84,7 +81,6 @@ export const ItemListContainer = () => {
               {productosFiltrados.map((item) => (
                 <ProductCard key={item.id} product={item} />
               ))}
-              {console.log(items)}
             </section>
           }
         </section>

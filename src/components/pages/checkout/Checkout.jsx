@@ -70,7 +70,7 @@ export const Checkout = () => {
       let productsCollection = collection(db, "products"); //referencio la coleccion de productos
 
       order.items.forEach((product) => {
-        //recorro el arreglo de la orden para actualizar el stock del producto una vez que ya se haya hecho la misma
+        //accedo a la propiedad items del objeto order que es un [] y lo recorro para actualizar el stock del producto una vez que ya se haya hecho la misma
         let productRef = doc(productsCollection, product.id); //referencio el producto con su id
         updateDoc(productRef, { stock: product.stock - product.quantity }); //actualizo el documento referenciado restando stock y la cantidad que se compro
       });
