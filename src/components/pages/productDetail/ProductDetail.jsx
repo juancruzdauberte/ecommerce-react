@@ -4,7 +4,7 @@ import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget"
 import { Counter } from "../../common/counter/Counter";
 import { CartContext } from "../../context/CartContext";
 import { ThemeContext } from "../../context/ThemeContext";
-import { db } from "../../../firebase";
+import { db } from "../../config/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext } from "react";
 import { useLoading } from "../../hooks/useLoading";
@@ -56,32 +56,38 @@ export const ProductDetail = () => {
       {loading ? (
         <LoadingWidget text="Cargando producto..." />
       ) : (
-        <article className="productDetail-card" key={item.id}>
-          <section className="productDetail-image">
-            <img src={item.url} alt={item.title} />
+        <section className="productDetail-container">
+          <section className="titlePage">
+            <h2>Detalle del producto</h2>
           </section>
-          <section className="productDetail-info">
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
-            <span>${item.price}</span>
-            <div>
-              <Counter item={item} onChange={setCountCopy} />
-            </div>
-            <button
-              onClick={() => {
-                onAdd();
-                toast.success("Producto añadido al carrito exitosamente", {
-                  action: {
-                    label: "Ver carrito",
-                    onClick: () => navigate("/cart"),
-                  },
-                });
-              }}
-            >
-              Añadir al carrito
-            </button>
-          </section>
-        </article>
+
+          <article className="productDetail-card" key={item.id}>
+            <section className="productDetail-image">
+              <img src={item.url} alt={item.title} />
+            </section>
+            <section className="productDetail-info">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span>${item.price}</span>
+              <div>
+                <Counter item={item} onChange={setCountCopy} />
+              </div>
+              <button
+                onClick={() => {
+                  onAdd();
+                  toast.success("Producto añadido al carrito exitosamente", {
+                    action: {
+                      label: "Ver carrito",
+                      onClick: () => navigate("/cart"),
+                    },
+                  });
+                }}
+              >
+                Añadir al carrito
+              </button>
+            </section>
+          </article>
+        </section>
       )}
 
       {error && (

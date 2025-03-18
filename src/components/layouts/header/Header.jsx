@@ -27,7 +27,7 @@ export function Header() {
     <header id="header" className={theme}>
       <section className="logo-titulo">
         {isMobile ? (
-          <Link to="/">
+          <Link to="/home">
             <img
               src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1739045695/logo_j6mmee.png"
               alt="logo"
@@ -56,7 +56,7 @@ export function Header() {
                 <BtnMode />
               </li>
               <li>
-                <NavLink to="/">Inicio</NavLink>
+                <NavLink to="/home">Inicio</NavLink>
               </li>
               <li className="dropdown">
                 <NavLink to="/products">

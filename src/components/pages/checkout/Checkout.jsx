@@ -5,7 +5,7 @@ import { CartContext } from "../../context/CartContext";
 import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget";
 import { useLoading } from "../../hooks/useLoading";
 import { useError } from "../../hooks/useError";
-import { db } from "../../../firebase";
+import { db } from "../../config/firebase";
 import "./checkout.css";
 import { Formulario } from "../../layouts/formulario/Formulario";
 import { NavLink } from "react-router-dom";
@@ -120,13 +120,12 @@ export const Checkout = () => {
                   </div>
                 </section>
               ))}
-            </section>
-
-            <section className="cart-amountTotal">
-              <div className="cart-totalPrice">
-                <h2>Total a pagar:</h2>
-                <span>${total}</span>
-              </div>
+              <section className="cart-amountTotal">
+                <div className="cart-totalPrice">
+                  <h2>Total a pagar:</h2>
+                  <span>${total}</span>
+                </div>
+              </section>
             </section>
           </section>
         </section>

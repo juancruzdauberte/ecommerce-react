@@ -8,45 +8,49 @@ import { Checkout } from "./components/pages/checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import { ThemeProvider } from "./components/context/ThemeContext";
 import { Toaster } from "sonner";
-// import { Login } from "./components/pages/login/Login";
-import { AuthProvider } from "./components/context/AuthContext";
 import { ProductList } from "./components/pages/productList/ProductList";
 import { Header } from "./components/layouts/header/Header";
 import { FooterContainer } from "./components/layouts/footerContainer/FooterContainer";
+import { AuthProvider } from "./components/context/AuthContext";
+import { ProtectedRoutes } from "./components/config/ProtectedRoutes";
+import { Login } from "./components/pages/login/Login";
+import { MyAccount } from "./components/pages/myAccount/MyAccount";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Toaster richColors duration={2500} />
       <AuthProvider>
-        <Toaster richColors duration={2500} />
         <ThemeProvider>
           <CartProvider>
             <Header />
             <Routes>
-              {/* <Route path="/login" element={<Login />} /> */}
+              <Route path="/" element={<Login />} />
 
-              {/* Inicio */}
-              <Route path="/" element={<Home />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/home" element={<Home />} />
+                {/* Productos */}
+                <Route path="/products" element={<ProductList />} />
+                <Route
+                  path="/products/category/:categoryName"
+                  element={<ProductList />}
+                />
+                <Route path="/product-detail/:id" element={<ProductDetail />} />
 
-              {/* Productos */}
-              <Route path="/products" element={<ProductList />} />
-              <Route
-                path="/products/category/:categoryName"
-                element={<ProductList />}
-              />
-              <Route path="/product-detail/:id" element={<ProductDetail />} />
+                {/* Carrito */}
+                <Route path="/cart" element={<Cart />} />
 
-              {/* Carrito */}
-              <Route path="/cart" element={<Cart />} />
+                {/* Checkout */}
+                <Route path="/checkout" element={<Checkout />} />
 
-              {/* Checkout */}
-              <Route path="/checkout" element={<Checkout />} />
+                {/* Contacto */}
+                <Route path="/contact" element={<Contacto />} />
 
-              {/* Contacto */}
-              <Route path="/contact" element={<Contacto />} />
+                {/* Quienes somos */}
+                <Route path="/about" element={<QuienesSomos />} />
 
-              {/* Quienes somos */}
-              <Route path="/about" element={<QuienesSomos />} />
+                <Route path="/account" element={<MyAccount />} />
+              </Route>
             </Routes>
             <FooterContainer />
           </CartProvider>

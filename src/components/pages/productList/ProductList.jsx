@@ -4,7 +4,7 @@ import { LoadingWidget } from "../../common/widgets/loadingWidget/LoadingWidget"
 import { useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { db } from "../../../firebase";
+import { db } from "../../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useLoading } from "../../hooks/useLoading";
 import { useError } from "../../hooks/useError";

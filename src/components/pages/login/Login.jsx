@@ -1,18 +1,11 @@
-// import "./login.css";
-// import { useContext, useEffect } from "react";
-// import { AuthContext } from "../../context/AuthContext";
-// import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-// export const Login = () => {
-//   const { user, loginWithGoogle, error } = useContext(AuthContext);
-//   const navigate = useNavigate();
-
-//   return (
-//     <div>
-//       {user && (
-//         <button onClick={loginWithGoogle}>Iniciar sesión con Google</button>
-//       )}
-//       {error && <p style={{ color: "red" }}>{error.message}</p>}
-//     </div>
-//   );
-// };
+export const Login = () => {
+  const { signInWithGoogle } = useContext(AuthContext);
+  return (
+    <div>
+      <button onClick={signInWithGoogle}>Iniciar sesion con google</button>
+    </div>
+  );
+};

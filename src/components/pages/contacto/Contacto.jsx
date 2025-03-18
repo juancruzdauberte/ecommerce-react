@@ -9,7 +9,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { Formulario } from "../../layouts/formulario/Formulario";
 import { toast } from "sonner";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../firebase";
+import { db } from "../../config/firebase";
 
 export const Contacto = () => {
   const { theme } = useContext(ThemeContext);

@@ -28,7 +28,7 @@ export function FooterContainer() {
       <section className="navbar-footer">
         <ul>
           <li>
-            <NavLink to="/">Inicio</NavLink>
+            <NavLink to="/home">Inicio</NavLink>
           </li>
           <li>
             <NavLink to="/products">Productos</NavLink>
